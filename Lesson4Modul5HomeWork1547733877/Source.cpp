@@ -140,21 +140,33 @@ void Task4()
 	SetConsoleTextAttribute(hConsole, 7);
 
 	int const ind = 10;
-	int arr[ind], i, j, q;
+	int arr[ind], i, j, q=0, count=0;
 
 	for (i = 0; i < ind; i++)
 	{
-		arr[i] = pow(2, i + 1);
+		arr[i] = 1 + rand()%10;
+		
+		//arr[i] = pow(2, i + 1);
+		
 		printf("A[%d] = %d \n", i, arr[i]);
 	}
 
-	q = arr[0 + 1] / arr[0];
+	for (i = 0; i < ind - 1; i++)
+	{
+		q = arr[i + 1] / arr[i];
+		i = ind;
+	}
+	
 
-	printf("\nЗнаменатель геометрической прогрессии q = %d", q);
+	for (i = 0; i < ind - 1; i++)
+	{
+		j = i + 1;
 
-	for (i = 0; i < ind-1; i++)
-		if (arr[i+1] == arr[i] * q) printf("\nЗнаменатель прогрессии q = %d \n", q);
-			else printf("\nне образуют \n\n", q);
+		if (arr[i + 1] == arr[i] * q) 
+			count++;
+	}
+	if (count==ind-1) printf("\nЗнаменатель прогрессии : %d \n", q);
+	else printf("\nЭлементы массива не образуют прогрессии\n");
 }
 
 
@@ -162,8 +174,45 @@ void Task5()
 {
 	SetConsoleTextAttribute(hConsole, 10);
 	printf("\n--------------------------------------------------------------------------\n\nTask5\n\n");
-	printf("\nВ разработке.... \n\n");
 	SetConsoleTextAttribute(hConsole, 7);
+
+	int const line = 5, column = 4;
+	int arr[line][column], i, j, a, b, c;
+
+	for (i = 0; i < line; i++)
+	{
+		for (j = 0; j < column; j++)
+		{
+			arr[i][j] = 1 + rand()%9;
+			printf("%d ", arr[i][j]);
+		}
+		printf("\n");
+	}
+	
+	
+	printf("\n\nCортировка по убыванию элементов последнего столбца \n\n");
+
+	j = 3;
+	
+	for (a = 0; a < line - 1; a++)					// достаточно поставить элементов
+		for (b = line - 2; b >= a; b--)				// идем с конца массива в начало
+			if (arr[b][j] < arr[b + 1][j])			// если элементы стоят правильно, ...
+				{
+					c = arr[b][j];					// переменная буфер
+					arr[b][j] = arr[b + 1][j];		// перестановка 
+					arr[b + 1][j] = c;
+				}
+	
+	
+	for (i = 0; i < line; i++)
+	{
+		for (j = 0; j < column; j++)
+		{
+			printf("%d ", arr[i][j]);
+		}
+		printf("\n");
+	}
+
 }
 
 
