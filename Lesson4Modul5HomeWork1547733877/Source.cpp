@@ -109,8 +109,27 @@ void Task3()
 {
 	SetConsoleTextAttribute(hConsole, 10);
 	printf("\n--------------------------------------------------------------------------\n\nTask3\n\n");
-	printf("\nВ разработке.... \n\n");
 	SetConsoleTextAttribute(hConsole, 7);
+
+	int const ind = 10;
+	int arr[ind] = {1,3,7,8,9,5,6,2,4,7}, i, j, count=0;
+			
+	for (i = 0; i < ind; i++) printf("A[%d] = %d \n", i, arr[i]);
+
+	for (i = 0; i < ind; i++)
+		for (j = i + 1; j < ind; j++)
+		{
+			count++;
+
+			if (arr[i] == arr[j] && i != j && i < j)
+			{
+				printf("\n\nОдинаковые элементы расположены по индексам %d и %d \n\n", i, j);
+				i = ind;
+			}
+		}
+
+	printf("\nКол-во циклов до момента нахождения одинаковых элементов = %d \n\n", count);
+
 }
 
 
@@ -118,8 +137,24 @@ void Task4()
 {
 	SetConsoleTextAttribute(hConsole, 10);
 	printf("\n--------------------------------------------------------------------------\n\nTask4\n\n");
-	printf("\nВ разработке.... \n\n");
 	SetConsoleTextAttribute(hConsole, 7);
+
+	int const ind = 10;
+	int arr[ind], i, j, q;
+
+	for (i = 0; i < ind; i++)
+	{
+		arr[i] = pow(2, i + 1);
+		printf("A[%d] = %d \n", i, arr[i]);
+	}
+
+	q = arr[0 + 1] / arr[0];
+
+	printf("\nЗнаменатель геометрической прогрессии q = %d", q);
+
+	for (i = 0; i < ind-1; i++)
+		if (arr[i+1] == arr[i] * q) printf("\nЗнаменатель прогрессии q = %d \n", q);
+			else printf("\nне образуют \n\n", q);
 }
 
 
