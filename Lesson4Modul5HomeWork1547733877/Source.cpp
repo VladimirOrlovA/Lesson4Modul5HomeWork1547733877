@@ -343,8 +343,38 @@ void Task8()
 {
 	SetConsoleTextAttribute(hConsole, 10);
 	printf("\n--------------------------------------------------------------------------\n\nTask8\n\n");
-	printf("\nВ разработке.... \n\n");
 	SetConsoleTextAttribute(hConsole, 7);
+
+	int const line = 4, column = 4;
+	int arr[line][column], i, j, count = 0, count1 = 0;
+	
+	printf("\nДан двухмерный массив %d х %d :\n\n", line, column);
+
+	for (i = 0; i < line; i++)
+	{
+		for (j = 0; j < column; j++)
+		{
+			arr[i][j] = 1 + rand() % 9;
+			printf("%d ", arr[i][j]);
+		}
+
+		printf("\n");
+	}
+
+
+	for (i = 0; i < line; i++)
+	{
+		for (j = 0; j < column; j++)
+		{
+			if (arr[i][j] % 2 == 0) count++;
+			else count1++;
+		}
+	}
+	
+	printf("\n\nКол-во четных элементов \t -> %d\n", count);
+	printf("\n\nКол-во нечетных элементов \t -> %d\n", count1);
+
+
 }
 
 
@@ -352,8 +382,33 @@ void Task9()
 {
 	SetConsoleTextAttribute(hConsole, 10);
 	printf("\n--------------------------------------------------------------------------\n\nTask9\n\n");
-	printf("\nВ разработке.... \n\n");
 	SetConsoleTextAttribute(hConsole, 7);
+
+	int const line = 10, column = 10;
+	int arr[line][column], i, j, count = 0, count1 = 0;
+
+	printf("\nДан двухмерный массив %d х %d :\n\n", line, column);
+
+	for (i = 0; i < line; i++)
+	{
+		for (j = 0; j < column; j++)
+		{
+			arr[i][j] = 1 + rand() % 9;
+			
+			if(arr[i][j]!=7) printf("%3d  ", arr[i][j]);
+			
+			else
+			{
+				printf(" (%d) ", arr[i][j]);
+				count++;
+			}
+		}
+
+		printf("\n");
+	}
+
+	printf("\n\nЧисло 7 среди элементов массива встречается %d раз\n", count);
+
 }
 
 
@@ -361,8 +416,43 @@ void Task10()
 {
 	SetConsoleTextAttribute(hConsole, 10);
 	printf("\n--------------------------------------------------------------------------\n\nTask10\n\n");
-	printf("\nВ разработке.... \n\n");
 	SetConsoleTextAttribute(hConsole, 7);
+
+	int const line = 6, column = 6;
+	int arr[line][column], i, j, min = 100, flag = 0;
+
+	printf("\nДан двухмерный массив %d х %d :\n\n", line, column);
+
+	for (i = 0; i < line; i++)
+	{
+		for (j = 0; j < column; j++)
+		{
+			arr[i][j] = 1 + rand() % 9;
+
+			printf("%d ", arr[i][j]);
+
+			if (arr[i][j] < min) min = arr[i][j];
+		}
+
+		printf("\n");
+	}
+
+	printf("\n min %d \n\n", min);
+
+	for (i = 0; i < line; i++)
+	{
+		for (j = 0; j < column; j++)
+		{
+			if (arr[i][j] == min) flag=1;
+			if (flag) break;
+		}
+		if (flag) break;
+	}
+		
+		
+
+	printf("\n\nИндексы первого наименьшего  элемента массива A[%d][%d] = %d \n", i, j, arr[i][j]);
+
 }
 
 
